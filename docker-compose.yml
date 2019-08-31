@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  api:
+    image: m0sscr.azurecr.io/iotsimbackend:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 3005:3005 # Ports on 3005 as to not conflict with react server on 3000
