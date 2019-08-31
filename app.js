@@ -6,8 +6,20 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var energyRouter = require('./routes/devices/energy.routes');
 
 var app = express();
+
+// MongoDB info
+var config = require('./config');
+var dbName = config.dbName;
+var conn = config.connectionString;
+
+//Set up mongoose connection
+var mongoose = require('mongoose');
+mongoose.connect(conn, { useNewUrlParser: true, dbName: dbName});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/energy', energyRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
