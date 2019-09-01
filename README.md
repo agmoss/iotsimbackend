@@ -20,11 +20,22 @@ Runs the app with hot module reloading
 ### `npm docker` 
 Script called by Docker file for build
 
-### Endpoints
+### Endpoint
 
 | Endpoint | Request Type | Description  |
 | ------------- |:-------------:| :-----|
-| {host}/devices/all| GET | Retuns all device datapoints |
+| {host}/api/devices/| GET | Retuns all device datapoints |
+
+### URL Paramaters
+
+These paramaters can be used in combination with each other
+
+| Paramater | Request Type | Description  |
+| ------------- |:-------------:| :-----|
+| /facility/`<facility ID>` | GET | Retuns all device datapoints in a facility |
+| /dsn/`<serial number>` | GET | Retuns all device datapoints for a device serial number |
+| /type/`<device type>` | GET | Retuns all device datapoints for an IoT device type |
+| /gte/`<epoch date>` | GET | Retuns all device datapoints after specified date |
 
 
 ### Deployment
