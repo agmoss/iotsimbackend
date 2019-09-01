@@ -7,6 +7,7 @@ var logger = require('morgan');
 
 // Routes
 var iotDeviceRouter = require('./routes/iotDevice.router');
+var iotFacilityRouter = require('./routes/iotFacility.router');
 
 var app = express();
 app.use(cors());
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 app.use('/api/devices', iotDeviceRouter);
+app.use('/api/facilities', iotFacilityRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
