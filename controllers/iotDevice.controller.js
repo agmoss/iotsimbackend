@@ -33,6 +33,14 @@ exports.iot_devices_main = (request, response, next) => {
     // Get the data
     IotDeviceModel.find(finder, (error, devices) => {
         if (error) { return next(error); }
+
+        var xCount = devices.length;
+
+        response.header('Access-Control-Expose-Headers', 'X-Total-Count')
+        response.set({
+            'X-Total-Count': xCount
+        })
+
         response.status(200).json(devices)
     })
 
