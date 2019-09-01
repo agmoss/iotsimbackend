@@ -9,9 +9,18 @@ var IotFacilitiesModel = require('../models/iotFacility.model');
 exports.iot_facilities = (request, response, next) => {
 
     // Get the data
-    IotFacilitiesModel.find({}, (error, devices) => {
+    IotFacilitiesModel.find({}, (error, facilities) => {
         if (error) { return next(error); }
-        response.status(200).json(devices)
+
+        var xCount = facilities.length
+
+        response.header('Access-Control-Expose-Headers', 'X-Total-Count')
+        response.set({
+            'X-Total-Count': xCount
+        })
+
+        response.status(200).json(facilities)
+
     })
 
 }
