@@ -30,18 +30,33 @@ exports.iot_devices_main = (request, response, next) => {
         Object.assign(finder, { timestamp: { $gte: prefix.gte } });
     }
 
-    // Get the data
-    IotDeviceModel.find(finder, (error, devices) => {
-        if (error) { return next(error); }
+    if (!request.query.last === true){
+        // Get the data
+        IotDeviceModel.find(finder, (error, devices) => {
+            if (error) { return next(error); }
 
-        var xCount = devices.length;
+            var xCount = devices.length;
 
-        response.header('Access-Control-Expose-Headers', 'X-Total-Count')
-        response.set({
-            'X-Total-Count': xCount
+            response.header('Access-Control-Expose-Headers', 'X-Total-Count')
+            response.set({
+                'X-Total-Count': xCount
+            })
+
+            response.status(200).json(devices)
         })
+    } else {
+        // Get last record
+        IotDeviceModel.findOne(finder, (error, message) => {
+            if (error) { return next(error); }
 
-        response.status(200).json(devices)
-    })
+            response.header('Access-Control-Expose-Headers', 'X-Total-Count')
+            response.set({
+                'X-Total-Count': 1
+            })
 
+            response.status(200).json(message)
+        })
+    }
 }
+
+

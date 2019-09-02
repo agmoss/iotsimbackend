@@ -21,4 +21,5 @@ router.get('/type/:type/gte/:gte',iotDevice_controller.iot_devices_main);
 router.get('/dsn/:dsn/gte/:gte',iotDevice_controller.iot_devices_main);
 router.get('/facility/:facility/type/:type/gte/:gte',iotDevice_controller.iot_devices_main);
 
+
 module.exports = router;

@@ -16,4 +16,4 @@ var IoTFacilitySchema = new Schema({
     },
 );
 
-module.exports = mongoose.model('IoTFacilityModel', IoTFacilitySchema); dsn / wind_iot_01
+module.exports = mongoose.model('IoTFacilityModel', IoTFacilitySchema); 
