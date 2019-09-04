@@ -46,7 +46,7 @@ exports.iot_devices_main = (request, response, next) => {
         })
     } else {
         // Get last record
-        IotDeviceModel.findOne(finder, (error, message) => {
+        IotDeviceModel.findOne(finder).sort({timestamp: -1}).exec((error, message) => {
             if (error) { return next(error); }
 
             response.header('Access-Control-Expose-Headers', 'X-Total-Count')
