@@ -14,7 +14,7 @@ In the project directory, you can run:
 Runs the app in the production mode.
 Open [http://localhost:3005](http://localhost:3005) to view data in the browser.
 
-### `npm devstart`
+### `npm start:dev`
 Runs the app with hot module reloading
 
 ### `npm docker` 
@@ -24,18 +24,18 @@ Script called by Docker file for build
 
 | Endpoint | Request Type | Description  |
 | ------------- |:-------------:| :-----|
-| {host}/api/devices/| GET | Retuns all device datapoints |
+| {host}/api/devices/| GET | Returns all device data points |
 
 ### URL Paramaters
 
-These paramaters can be used in combination with each other
+These parameters can be used in combination with each other
 
-| Paramater | Request Type | Description  |
+| Parameter | Request Type | Description  |
 | ------------- |:-------------:| :-----|
-| /facility/`<facility ID>` | GET | Retuns all device datapoints in a facility |
-| /dsn/`<serial number>` | GET | Retuns all device datapoints for a device serial number |
-| /type/`<device type>` | GET | Retuns all device datapoints for an IoT device type |
-| /gte/`<epoch date>` | GET | Retuns all device datapoints after specified date |
+| /facility/`<facility ID>` | GET | Returns all device data points in a facility |
+| /dsn/`<serial number>` | GET | Returns all device data points for a device serial number |
+| /type/`<device type>` | GET | Returns all device data points for an IoT device type |
+| /gte/`<epoch date>` | GET | Returns all device data points after specified date |
 
 
 ### Deployment

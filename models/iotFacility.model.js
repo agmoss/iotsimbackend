@@ -1,19 +1,17 @@
-var mongoose = require('mongoose');
-var config = require('../config');
-var collection = config.facilityCollection;
-
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var IoTFacilitySchema = new Schema({
-    _someId: String,
-    id: String,
-    name: String,
-    geolocation: Schema.Types.Mixed,
-    devices: Array
-},
+var IoTFacilitySchema = new Schema(
     {
-        collection: collection
+        _someId: String,
+        id: String,
+        name: String,
+        geolocation: Schema.Types.Mixed,
+        devices: Array,
     },
+    {
+        collection: process.env.FACILITY_COLLECTION,
+    }
 );
 
-module.exports = mongoose.model('IoTFacilityModel', IoTFacilitySchema); 
+module.exports = mongoose.model("IoTFacilityModel", IoTFacilitySchema);
